@@ -26,6 +26,7 @@ public class IndexController {
 
     @GetMapping("/userById/{id}")
     public User userById(@PathVariable Long id){
+
         return rep.findById(id).orElse(new User());
     }
 }
