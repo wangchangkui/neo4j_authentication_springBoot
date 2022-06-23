@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * @author wck
@@ -26,7 +27,7 @@ public class IndexController {
 
     @GetMapping("/userById/{id}")
     public User userById(@PathVariable Long id){
-
-        return rep.findById(id).orElse(new User());
+        Optional<User> user = rep.findById(id);
+        return user.orElse(null);
     }
 }

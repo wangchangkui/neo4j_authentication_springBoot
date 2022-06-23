@@ -19,17 +19,12 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @Property(value = "role")
-    private String description;
+    @Property("userName")
     private String name;
 
-    @Relationship(type = "User_Like")
-    public Set<User> userList;
+    @Property("email")
+    private String email;
 
-    public void worksWith(User user) {
-        if (userList == null) {
-            userList = new HashSet<>();
-        }
-        userList.add(user);
-    }
+    @Property("age")
+    private Integer age;
 }
