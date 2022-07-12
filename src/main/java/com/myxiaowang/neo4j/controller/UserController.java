@@ -25,6 +25,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @DeleteMapping("/deleteRelaShipRep/{userId}/{roleId}")
+    public User deleteUserRelationByRep(@PathVariable String roleId, @PathVariable String userId){
+        return userService.deleteUserRelationByRep(roleId,userId);
+    }
+
     @DeleteMapping("/deleteRelaShip/{userId}/{roleId}")
     public User deleteUserRelation(@PathVariable String roleId, @PathVariable String userId){
         return userService.deleteUserRelation(roleId,userId);

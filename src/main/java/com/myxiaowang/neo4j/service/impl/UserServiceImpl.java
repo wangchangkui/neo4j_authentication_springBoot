@@ -34,6 +34,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public User deleteUserRelationByRep(String roleId, String userId) {
+        return rep.deleteRelaShip(roleId,userId);
+    }
+
+
+    @Override
     public Page<User> userByPage(RequestDto requestDto) {
         return  rep.findAll(PageRequest.of(requestDto.page,requestDto.getSize()));
     }

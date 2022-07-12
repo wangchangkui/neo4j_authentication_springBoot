@@ -16,6 +16,19 @@ public interface UserService {
 
 
     /**
+     * 当你受够了直接使用封装好的方法
+     * 你可以去Rep类下面操作原始的指令
+     * ————————————————
+     *
+     * 通过指令的方式删除角色的关系
+     *
+     * @param roleId 角色
+     * @param userId 用户
+     * @return User
+     */
+    User deleteUserRelationByRep(String roleId, String userId);
+
+    /**
      *  删除用户指定的角色
      * @param roleId 角色id
      * @param userId 用户id
