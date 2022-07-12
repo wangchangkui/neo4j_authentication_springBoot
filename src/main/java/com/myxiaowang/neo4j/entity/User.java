@@ -1,10 +1,11 @@
 package com.myxiaowang.neo4j.entity;
 
 import lombok.Data;
-import org.springframework.data.neo4j.core.schema.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import lombok.NoArgsConstructor;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
 
 /**
  * @author wck
@@ -14,6 +15,7 @@ import java.util.Set;
  */
 @Data
 @Node("user")
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue
@@ -27,4 +29,13 @@ public class User {
 
     @Property("age")
     private Integer age;
+
+
+    public User(Long id ,String name, String email, Integer age) {
+        this.name = name;
+        this.id =id;
+        this.email = email;
+        this.age = age;
+    }
+
 }

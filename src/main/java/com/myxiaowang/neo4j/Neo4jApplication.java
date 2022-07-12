@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
  */
 @SpringBootApplication
 @EntityScan(value = "com.myxiaowang.neo4j.entity")
-@EnableNeo4jRepositories
+@EnableNeo4jRepositories(value = "com.myxiaowang.neo4j.rep")
 public class Neo4jApplication {
 
     public static void main(String[] args) {
