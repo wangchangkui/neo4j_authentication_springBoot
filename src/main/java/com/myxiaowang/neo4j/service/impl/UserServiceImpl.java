@@ -1,9 +1,13 @@
 package com.myxiaowang.neo4j.service.impl;
 
 import com.myxiaowang.neo4j.entity.User;
+import com.myxiaowang.neo4j.entity.requset.RequestDto;
 import com.myxiaowang.neo4j.rep.UserRep;
 import com.myxiaowang.neo4j.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +25,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRep rep;
+
+
+    @Override
+    public Page<User> userByPage(RequestDto requestDto) {
+        return  rep.findAll(PageRequest.of(requestDto.page,requestDto.getSize()));
+    }
+
+
 
 
     @Override

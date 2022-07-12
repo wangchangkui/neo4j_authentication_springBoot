@@ -1,8 +1,11 @@
 package com.myxiaowang.neo4j.controller;
 
+import com.myxiaowang.neo4j.aop.annotation.PageAnnotation;
 import com.myxiaowang.neo4j.entity.User;
+import com.myxiaowang.neo4j.entity.requset.RequestDto;
 import com.myxiaowang.neo4j.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +24,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
+
+    @PostMapping("/userPage")
+    @PageAnnotation
+    public Page<User> selectUserPage(@RequestBody  RequestDto requestDto){
+        return userService.userByPage(requestDto);
+    }
+
 
 
     @DeleteMapping("/batchDeleteUser")

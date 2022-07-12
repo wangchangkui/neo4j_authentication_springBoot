@@ -1,6 +1,8 @@
 package com.myxiaowang.neo4j.service;
 
 import com.myxiaowang.neo4j.entity.User;
+import com.myxiaowang.neo4j.entity.requset.RequestDto;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -51,4 +53,10 @@ public interface UserService {
     List<User> listUser();
 
 
+    /**
+     * 分页查询用户
+     * @param requestDto 支持扩展的请求对象
+     * @return User of List
+     */
+    Page<User> userByPage(RequestDto requestDto);
 }
