@@ -1,7 +1,11 @@
 package com.myxiaowang.neo4j.entity.relation;
 
+import com.myxiaowang.neo4j.entity.Role;
 import com.myxiaowang.neo4j.entity.User;
 import lombok.Data;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.RelationshipId;
+import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 
 /**
  * @author wck
@@ -10,9 +14,9 @@ import lombok.Data;
  * @createTime 2022年05月23日 15:27:00
  */
 @Data
+@RelationshipProperties
 public class UserRelation {
 
-    private User startUser;
-
-    private User endUser;
+    @RelationshipId
+    private Long id;
 }

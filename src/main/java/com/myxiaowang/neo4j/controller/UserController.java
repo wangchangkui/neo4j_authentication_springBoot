@@ -26,6 +26,12 @@ public class UserController {
     private UserService userService;
 
 
+    @GetMapping("/addRelaShip/{userId}/{roleId}")
+    public User addRelaShip(@PathVariable String roleId, @PathVariable String userId){
+        return userService.addRelaShip(roleId,userId);
+    }
+
+
 
     @PostMapping("/userPage")
     @PageAnnotation

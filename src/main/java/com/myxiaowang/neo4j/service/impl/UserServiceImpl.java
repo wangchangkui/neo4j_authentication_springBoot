@@ -1,7 +1,9 @@
 package com.myxiaowang.neo4j.service.impl;
 
+import com.myxiaowang.neo4j.entity.Role;
 import com.myxiaowang.neo4j.entity.User;
 import com.myxiaowang.neo4j.entity.requset.RequestDto;
+import com.myxiaowang.neo4j.rep.RoleRep;
 import com.myxiaowang.neo4j.rep.UserRep;
 import com.myxiaowang.neo4j.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author wck
@@ -26,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRep rep;
 
+    @Autowired
+    private RoleRep roleRep;
+
 
     @Override
     public Page<User> userByPage(RequestDto requestDto) {
@@ -33,7 +39,23 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    @Override
+    public User addRelaShip(String roleId, String userId) {
+        // 查询角色信息
+        Optional<Role> role = roleRep.findById(roleId);
+        if(role.isPresent()){
+            // 查询用户信息
+            Optional<User> user = rep.findById(userId);
+            if(user.isPresent()){
+                User users = user.get();
+                Set<Role> roles = users.getRoles();
+                roles.add(role.get());
+                rep.save(users);
+                return users;
+            }
+        }
+        return null;
+    }
 
     @Override
     public List<User> deleteBatchUsers() {

@@ -13,6 +13,14 @@ import java.util.List;
  * @createTime 2022年07月12日 11:37:00
  */
 public interface UserService {
+
+    /**
+     * 给指定用户添加映射关系
+     * @param roleId 角色id
+     * @param userId 用户Id
+     * @return User
+     */
+    User addRelaShip(String roleId, String userId);
     /**
      * 批量删除用户
      * @return list of users
@@ -59,4 +67,6 @@ public interface UserService {
      * @return User of List
      */
     Page<User> userByPage(RequestDto requestDto);
+
+
 }
