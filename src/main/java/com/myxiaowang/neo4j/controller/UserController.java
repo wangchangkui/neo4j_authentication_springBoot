@@ -1,12 +1,11 @@
 package com.myxiaowang.neo4j.controller;
 
 import com.myxiaowang.neo4j.entity.User;
-import com.myxiaowang.neo4j.rep.UserRep;
 import com.myxiaowang.neo4j.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 /**
  * @author wck
@@ -16,12 +15,17 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("/index")
-public class IndexController {
+@RequestMapping("/user")
+public class UserController {
 
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/list")
+    public List<User> getListUser(){
+        return userService.listUser();
+    }
 
 
     @PostMapping("/updateUser")

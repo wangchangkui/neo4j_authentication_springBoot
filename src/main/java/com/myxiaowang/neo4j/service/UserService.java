@@ -2,6 +2,8 @@ package com.myxiaowang.neo4j.service;
 
 import com.myxiaowang.neo4j.entity.User;
 
+import java.util.List;
+
 /**
  * @author wck
  * @version 1.0.0
@@ -38,4 +40,9 @@ public interface UserService {
      */
     User insertUser(User user);
 
+    /**
+     * 获取所有的节点
+     * @return list of user
+     */
+    List<User> listUser();
 }
