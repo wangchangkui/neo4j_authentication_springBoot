@@ -12,6 +12,13 @@ public interface UserService {
 
 
     /**
+     * 更新用户信息
+     * @param user 更新的对象 需要携带Id
+     * @return user
+     */
+    User updateUser(User user);
+
+    /**
      * 通过id删除 用户
      * @param id id 此Id是通过CommonIdGenerator.Class 生成的id
      * @return 删除的用户
@@ -30,4 +37,5 @@ public interface UserService {
      * @return 操作结果
      */
     User insertUser(User user);
+
 }

@@ -5,6 +5,7 @@ import com.myxiaowang.neo4j.rep.UserRep;
 import com.myxiaowang.neo4j.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -20,6 +21,20 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRep rep;
 
+
+    /**
+     * 事务会与其他数据的事务发生冲突
+     * 需要自己自己去配置单独的事务管理器
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public User updateUser(User user) {
+        // todo 似乎spring封装的crud功能没有支持修改？
+        rep.deleteById(user.getId());
+        // 亲测支持事务
+        // System.out.println(10/0);
+        return rep.save(user);
+    }
 
     @Override
     public User deleteUserById(String id) {

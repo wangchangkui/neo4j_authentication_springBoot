@@ -23,6 +23,12 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
+
+    @PostMapping("/updateUser")
+    public User updateUserById(@RequestBody User user){
+        return userService.updateUser(user);
+    }
+
     @GetMapping("/userById/{id}")
     public User userById(@PathVariable String id){
       return userService.findUserById(id);
