@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @createTime 2022年05月23日 15:49:00
  */
 @Component
-public interface UserRep extends Neo4jRepository<User,Long> {
+public interface UserRep extends Neo4jRepository<User,String> {
 
 
 }

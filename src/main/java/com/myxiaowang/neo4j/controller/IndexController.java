@@ -3,10 +3,7 @@ package com.myxiaowang.neo4j.controller;
 import com.myxiaowang.neo4j.entity.User;
 import com.myxiaowang.neo4j.rep.UserRep;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -25,8 +22,16 @@ public class IndexController {
     private UserRep rep;
 
     @GetMapping("/userById/{id}")
-    public User userById(@PathVariable Long id){
+    public User userById(@PathVariable String id){
         Optional<User> user = rep.findById(id);
         return user.orElse(null);
+    }
+
+
+
+    @PostMapping("/insert")
+    public String insertUser(@RequestBody User user){
+        rep.save(user);
+        return "操作成功";
     }
 }

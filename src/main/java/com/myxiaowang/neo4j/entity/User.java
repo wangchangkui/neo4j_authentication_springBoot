@@ -1,5 +1,6 @@
 package com.myxiaowang.neo4j.entity;
 
+import com.myxiaowang.neo4j.config.CommonIdGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
@@ -18,8 +19,8 @@ import org.springframework.data.neo4j.core.schema.Property;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(value = CommonIdGenerator.class)
+    private String id;
 
     @Property("userName")
     private String name;
@@ -31,7 +32,7 @@ public class User {
     private Integer age;
 
 
-    public User(Long id ,String name, String email, Integer age) {
+    public User(String id ,String name, String email, Integer age) {
         this.name = name;
         this.id =id;
         this.email = email;
