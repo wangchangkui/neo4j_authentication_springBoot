@@ -22,11 +22,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    @DeleteMapping("/batchDeleteUser")
+    public List<User> deleteUsers(){
+        return userService.deleteBatchUsers();
+    }
+
     @GetMapping("/list")
     public List<User> getListUser(){
         return userService.listUser();
     }
-
 
     @PostMapping("/updateUser")
     public User updateUserById(@RequestBody User user){

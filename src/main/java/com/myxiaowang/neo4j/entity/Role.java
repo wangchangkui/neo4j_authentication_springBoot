@@ -1,6 +1,9 @@
 package com.myxiaowang.neo4j.entity;
 
 import com.myxiaowang.neo4j.config.CommonIdGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -13,6 +16,9 @@ import org.springframework.data.neo4j.core.schema.Property;
  * @createTime 2022年07月12日 14:17:00
  */
 @Node("role")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Role {
     @Id
     @GeneratedValue(value = CommonIdGenerator.class)
@@ -20,4 +26,5 @@ public class Role {
 
     @Property("role_name")
     private String roleName;
+
 }

@@ -23,6 +23,17 @@ public class UserServiceImpl implements UserService {
     private UserRep rep;
 
 
+    @Override
+    public List<User> deleteBatchUsers() {
+        List<User> users = listUser();
+        try{
+            rep.deleteAll();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     /**
      * 事务会与其他数据的事务发生冲突
      * 需要自己自己去配置单独的事务管理器

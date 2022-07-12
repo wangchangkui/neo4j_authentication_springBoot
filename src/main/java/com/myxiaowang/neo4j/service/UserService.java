@@ -11,7 +11,11 @@ import java.util.List;
  * @createTime 2022年07月12日 11:37:00
  */
 public interface UserService {
-
+    /**
+     * 批量删除用户
+     * @return list of users
+     */
+    List<User> deleteBatchUsers();
 
     /**
      * 更新用户信息
@@ -45,4 +49,6 @@ public interface UserService {
      * @return list of user
      */
     List<User> listUser();
+
+
 }
