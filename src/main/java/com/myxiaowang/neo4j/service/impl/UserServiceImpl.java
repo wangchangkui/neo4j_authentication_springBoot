@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User deleteUserRelationByRep(String roleId, String userId) {
-        return rep.deleteRelaShip(roleId,userId);
+        User user = rep.deleteRelaShip(roleId, userId);
+        throw new RuntimeException("这个方法只是测试方法 删了以及不能再重用了,请自己写sql");
     }
 
 
