@@ -1,4 +1,4 @@
-package com.myxiaowang.neo4j.config;
+package com.myxiaowang.neo4j.entity.rolerelationship;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,23 +12,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @createTime 2022年06月23日 15:11:00
  */
 @Slf4j
-public abstract class RoleAbstractConfig implements RoleConfig {
+public abstract class AbstractRoleConfig implements RoleConfig {
 
     /**
      * 定义存储角色之间的关系
      */
-    protected final  static CopyOnWriteArrayList<String> roleNameList=new CopyOnWriteArrayList<>();
+    protected final  static CopyOnWriteArrayList<String> ROLE_NAME_LIST =new CopyOnWriteArrayList<>();
 
     /**
      * 定义存储用户与角色之间的关系
      */
-    protected final static CopyOnWriteArrayList<String> userRoleNameList=new CopyOnWriteArrayList<>();
+    protected final static CopyOnWriteArrayList<String> USER_ROLE_NAME_LIST =new CopyOnWriteArrayList<>();
 
     static {
         // 预先存储部分存在的角色关系
-        roleNameList.add("contain");
+        ROLE_NAME_LIST.add("contain");
         // 存储用户角色之间的关系
-        userRoleNameList.add("hasRole");
+        USER_ROLE_NAME_LIST.add("hasRole");
     }
 
     public boolean hasUserRole(String userRoleName){
@@ -40,27 +40,27 @@ public abstract class RoleAbstractConfig implements RoleConfig {
     }
 
     public static List<String> getRoleNameList(){
-        return roleNameList;
+        return ROLE_NAME_LIST;
     }
 
     public static List<String> getUserRoleNameList(){
-        return userRoleNameList;
+        return USER_ROLE_NAME_LIST;
     }
 
     @Override
     public void addRoleName(String roleRelationShipName) {
-        RoleAbstractConfig.roleNameList.add(roleRelationShipName);
+        AbstractRoleConfig.ROLE_NAME_LIST.add(roleRelationShipName);
     }
 
     @Override
     public void addUserRoleName(String userRoleRelationShipName) {
-        RoleAbstractConfig.userRoleNameList.add(userRoleRelationShipName);
+        AbstractRoleConfig.USER_ROLE_NAME_LIST.add(userRoleRelationShipName);
     }
 
     @Override
     public void deleteRoleName(String roleRelationShipName) {
         try{
-            RoleAbstractConfig.roleNameList.remove(roleRelationShipName);
+            AbstractRoleConfig.ROLE_NAME_LIST.remove(roleRelationShipName);
         }catch (Exception e){
             e.printStackTrace();
             log.error("不存在这个角色关系");
@@ -70,7 +70,7 @@ public abstract class RoleAbstractConfig implements RoleConfig {
     @Override
     public void deleteUserRoleName(String userRoleRelationShipName) {
         try{
-            RoleAbstractConfig.userRoleNameList.remove(userRoleRelationShipName);
+            AbstractRoleConfig.USER_ROLE_NAME_LIST.remove(userRoleRelationShipName);
         }catch (Exception e){
             e.printStackTrace();
             log.error("不存在这个用户角色关系");

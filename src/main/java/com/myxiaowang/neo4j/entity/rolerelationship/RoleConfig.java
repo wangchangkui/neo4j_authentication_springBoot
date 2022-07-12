@@ -1,4 +1,4 @@
-package com.myxiaowang.neo4j.config;
+package com.myxiaowang.neo4j.entity.rolerelationship;
 
 /**
  * @author wck

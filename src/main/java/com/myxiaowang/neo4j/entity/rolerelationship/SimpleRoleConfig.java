@@ -1,6 +1,4 @@
-package com.myxiaowang.neo4j.config.role;
-
-import com.myxiaowang.neo4j.config.RoleAbstractConfig;
+package com.myxiaowang.neo4j.entity.rolerelationship;
 
 import java.util.List;
 
@@ -10,19 +8,19 @@ import java.util.List;
  * @Description 这个类应该封装一些对集合的操作
  * @createTime 2022年06月23日 15:36:00
  */
-public class SimpleRoleConfig extends RoleAbstractConfig {
+public class SimpleRoleConfig extends AbstractRoleConfig {
 
     public List<String> getAllRoleNames(){
-        return SimpleRoleConfig.roleNameList;
+        return SimpleRoleConfig.ROLE_NAME_LIST;
     }
 
     @Override
     public boolean hasUserRole(String userRoleName) {
-        return SimpleRoleConfig.roleNameList.contains(userRoleName);
+        return SimpleRoleConfig.ROLE_NAME_LIST.contains(userRoleName);
     }
 
     @Override
     public boolean hasRole(String roleName) {
-        return  SimpleRoleConfig.roleNameList.contains(roleName);
+        return  SimpleRoleConfig.ROLE_NAME_LIST.contains(roleName);
     }
 }

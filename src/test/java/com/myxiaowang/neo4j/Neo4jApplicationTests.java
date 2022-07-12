@@ -1,6 +1,6 @@
 package com.myxiaowang.neo4j;
 
-import com.myxiaowang.neo4j.config.role.SimpleRoleConfig;
+import com.myxiaowang.neo4j.entity.rolerelationship.SimpleRoleConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
