@@ -18,6 +18,7 @@ public class CommonIdGenerator implements IdGenerator<String> {
 
     @Override
     public String generateId(String primaryLabel, Object entity) {
+        // primaryLabel 通常表示标签名称
         return StringUtils.uncapitalize(primaryLabel) +
                 "-" + IdUtil.fastSimpleUUID();
     }
