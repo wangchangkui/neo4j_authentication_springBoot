@@ -40,6 +40,22 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public User deleteUserRelation(String roleId, String userId) {
+        Optional<User> user = rep.findById(userId);
+        if(user.isPresent()){
+            User users = user.get();
+            Optional<Role> role = roleRep.findById(roleId);
+            if(role.isPresent()){
+                Role roles= role.get();
+                users.getRoles().remove(roles);
+                rep.save(users);
+            }
+            return users;
+        }
+        return null;
+    }
+
+    @Override
     public User addRelaShip(String roleId, String userId) {
         // 查询角色信息
         Optional<Role> role = roleRep.findById(roleId);

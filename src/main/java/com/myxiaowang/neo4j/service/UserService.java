@@ -14,6 +14,14 @@ import java.util.List;
  */
 public interface UserService {
 
+
+    /**
+     *  删除用户指定的角色
+     * @param roleId 角色id
+     * @param userId 用户id
+     * @return user
+     */
+    User deleteUserRelation(String roleId, String userId);
     /**
      * 给指定用户添加映射关系
      * @param roleId 角色id
@@ -67,6 +75,7 @@ public interface UserService {
      * @return User of List
      */
     Page<User> userByPage(RequestDto requestDto);
+
 
 
 }

@@ -4,10 +4,9 @@ import com.myxiaowang.neo4j.config.CommonIdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.core.schema.*;
+
+import java.util.Set;
 
 /**
  * @author wck
@@ -27,4 +26,6 @@ public class Role {
     @Property("role_name")
     private String roleName;
 
+    @Relationship(type = "contain",direction = Relationship.Direction.OUTGOING)
+    public Set<Role> roles;
 }
